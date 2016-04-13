@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{
+	margin:0;
+	padding:0;
+	}
+img{
+	
+	height:100%;
+	width:100%;
+	}
+</style>
+<script>
+window.onload = function(){
+	var arr = ["实习工作经验/JS练习/picture/1.jpg","实习工作经验/JS练习/picture/0.jpg","实习工作经验/JS练习/picture/3.jpeg","实习工作经验/JS练习/picture/2.jpg","实习工作经验/JS练习/picture/4.jpg"];	
+	var oDiv = document.getElementById('div1');
+		var oImg = document.getElementsByTagName('img')[0];
+		var num = 0;
+	fn();
+	function fn(){
+		var timer = setInterval(function(){
+			oImg.src = arr[num];
+			num++;
+			num%=arr.length;
+		},3000);
+	};
+	
+	
+	
+	
+};
+
+</script>
+</head>
+
+<body>
+<img src="实习工作经验/JS练习/picture/2.jpg"/>
+</body>
+</html>

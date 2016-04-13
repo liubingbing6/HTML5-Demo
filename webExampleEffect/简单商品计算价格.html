@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+window.onload = function(){
+	var oUl = document.getElementById('oUl');
+	var aLi = oUl.getElementsByTagName('li');
+	var b = document.getElementsByTagName('b');
+	//alert(b[0].innerHTML);
+	var comTotal = 0;
+	var totalVal =0;
+	var arr =[];
+	var arr1 = [];
+	for(var i=0;i<aLi.length;i++){
+		fn(aLi[i]);	
+	}
+	function fn(aLi){
+		var oBtn = aLi.getElementsByTagName('input');
+		var oSpan = aLi.getElementsByTagName('span');
+		var valSpan0 = oSpan[0].innerHTML;
+		var valSpan1 = oSpan[1].getElementsByTagName('strong')[0].innerHTML;
+		var valSpan2 = oSpan[2].getElementsByTagName('i')[0];
+		
+		oBtn[1].onclick = function(){
+			valSpan0++;
+			valSpan0 = parseInt(valSpan0);
+			valSpan1 = parseFloat(valSpan1);
+			oSpan[0].innerHTML = valSpan0;
+			valSpan2.innerHTML = valSpan0*valSpan1;
+			comTotal ++;
+			b[0].innerHTML = comTotal;
+			
+			//alert(arr1.length);
+			//totalVal += parseFloat(valSpan2.innerHTML);
+			//b[1].innerHTML = parseFloat(valSpan2.innerHTML);
+			
+			if(valSpan0 !== 0){
+				arr.push(valSpan1);
+			}else{
+				arr.pop(valSpan1);	
+			}
+			arr.sort(function(x,y){
+				return x-y;				  
+			});
+			b[2].innerHTML = arr[arr.length-1];
+		};
+		oBtn[0].onclick = function(){
+			valSpan0--;
+			if(comTotal!==0&& !(valSpan0<0)){
+				comTotal--;
+			}
+			if(valSpan0<0){
+				valSpan0 = 0;
+			}
+			
+			valSpan0 = parseInt(valSpan0);
+			valSpan1 = parseFloat(valSpan1);
+			oSpan[0].innerHTML = valSpan0;
+			valSpan2.innerHTML = valSpan0*valSpan1;
+			b[0].innerHTML = comTotal;
+			
+			if(valSpan0 !== 0){
+				arr.push(valSpan1);
+			}else{
+				arr.pop(valSpan1);	
+			}
+			arr.sort(function(x,y){
+				return x-y;				  
+			});
+			b[2].innerHTML = arr[arr.length-1]||0;
+		};
+		
+	};
+	
+}
+</script>
+</head>
+
+<body>
+<ul id="oUl">
+	<li>
+    	<input type="button" value="-"/>
+        <span>0</span>
+        <input type="button" value="+"/>
+        <span>单价<strong>12.5</strong>元  </span>
+        <span>共计<i>0</i>元</span>
+    </li>
+    <li>
+    	<input type="button" value="-"/>
+        <span>0</span>
+        <input type="button" value="+"/>
+        <span>单价<strong>22.5</strong>元  </span>
+        <span>共计<i>0</i>元</span>
+    </li>
+    <li>
+    	<input type="button" value="-"/>
+        <span>0</span>
+        <input type="button" value="+"/>
+        <span>单价<strong>2.5</strong>元  </span>
+        <span>共计<i>0</i>元</span>
+    </li>
+    <li>
+    	<input type="button" value="-"/>
+        <span>0</span>
+        <input type="button" value="+"/>
+        <span>单价<strong>15</strong>元  </span>
+        <span>共计<i>0</i>元</span>
+    </li>  
+</ul>
+商品共计<b>0</b>件；共花费<b>0</b>元；其中最贵的是单价商品是<b>0</b>元；
+</body>
+</html>
